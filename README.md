@@ -12,16 +12,25 @@ Up-to-date documentation and explanations for Apollo Server can be found on [doc
 git clone https://github.com/apollostack/apollo-starter-kit
 cd apollo-starter-kit
 npm install
-npm run start
+npm start
 ```
 
-Then open [http://localhost:3000/graphiql](http://localhost:3000/graphql)
+In another terminal, start MongoDB
+```sh
+mongod
+```
+
+Then open [http://localhost:3000/graphiql](http://localhost:3000/graphiql)
 
 When you paste this on the left side of the page:
 
 ```
 {
-  testString
+  author(firstName: "Edmond", lastName: "Jones"){
+    firstName
+    lastName
+  }
+  getFortuneCookie
 }
 ```
 
@@ -30,8 +39,11 @@ and hit the play button (cmd-return), then you should get this on the right side
 ```json
 {
   "data": {
-    "testString": "It works!"
+    "author": {
+      "firstName": "Edmond",
+      "lastName": "Jones"
+    },
+    "getFortuneCookie": "Winners never quit, quitters never win."
   }
 }
-```  
-# apollo-tutorial
+```
